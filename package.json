@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "name": "marionext-behaviors",
+  "version": "0.1.0",
+  "description": "Behaviors for marionette.js",
+  "repository": "blikblum/marionext-behaviors",
+  "author": "Luiz Américo Pereira Câmara",
+  "contributors": [
+    "Luiz Américo Pereira Câmara"
+  ],
+  "license": "MIT",
+  "keywords": [],
+  "main": "marionext-behaviors.js",
+  "module": "marionext-behaviors.esm.js",
+  "sideEffects": false,
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.2.0",
+    "babel-preset-env": "^1.7.0",
+    "del": "^3.0.0",
+    "jest": "^23.2.0",
+    "rollup": "^0.61.2",
+    "rollup-plugin-babel": "^3.0.5",
+    "standard": "^11.0.1"
+  },
+  "scripts": {
+    "lint": "standard src test tools",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cover": "jest --coverage",
+    "build": "node tools/build",
+    "prepublishOnly": "node tools/checkcwd dist && npm run build"
+  },
+  "peerDependencies": {
+    "backbone": "~1.3.3",
+    "backbone.marionette": "^4.0.0-alpha.1",
+    "underscore": "~1.8.3"
+  }
+}

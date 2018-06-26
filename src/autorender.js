@@ -5,7 +5,7 @@ import _ from 'underscore'
 const AutoRender = Behavior.extend({
   constructor (options) {
     if (!this) {
-      return Object.assign({}, options || {}, {regionClass: AutoRender})
+      return Object.assign({}, options || {}, {behaviorClass: AutoRender})
     }
     Behavior.prototype.constructor.apply(this, arguments)
   },

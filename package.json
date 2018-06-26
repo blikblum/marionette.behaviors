@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "marionext-behaviors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Behaviors for marionette.js",
   "repository": "blikblum/marionext-behaviors",
   "author": "Luiz Américo Pereira Câmara",

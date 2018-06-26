@@ -13,7 +13,7 @@ function parseNumber (value) {
 const FormBind = Behavior.extend({
   constructor (options) {
     if (!this) {
-      return Object.assign({}, options || {}, {regionClass: FormBind})
+      return Object.assign({}, options || {}, {behaviorClass: FormBind})
     }
     Behavior.prototype.constructor.apply(this, arguments)
   },

@@ -28,10 +28,13 @@ const FormBind = Behavior.extend({
     const inputEl = e.target
     const prop = inputEl.name
     const propType = inputEl.dataset.propType || inputEl.type
-    const modelProp = inputEl.dataset.modelName || 'model'
-    const model = this.view[modelProp]
+    const modelName = inputEl.dataset.modelName || this.getOption('modelName') || 'model'
+    let model = inputEl.model
+    if (!model) { 
+      model = this.view[modelName] 
+    }
     if (!model) {
-      console.warn(`FormBind: could not find model "${modelProp}" in view "${this.view.cid}"`)
+      console.warn(`FormBind: could not find model "${modelName}" in view "${this.view.cid}"`)
       return
     }
 

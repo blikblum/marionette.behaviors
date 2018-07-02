@@ -47,7 +47,7 @@ const FormBind = Behavior.extend({
       default:
         value = inputEl.value
     }
-    model.set(prop, value, {validate: true})
+    model.set(prop, value, {validate: true, attributes: [prop]})
   }
 })
 

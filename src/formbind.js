@@ -1,4 +1,6 @@
 import { Behavior } from 'backbone.marionette'
+import _ from 'underscore'
+import setPath from 'lodash/set'
 
 function toNull (value) {
   return ((typeof value === 'string' && value.trim() === '') || value == null) ? null : value
@@ -31,8 +33,8 @@ const FormBind = Behavior.extend({
     const propType = inputEl.dataset.propType || inputEl.type
     const modelName = inputEl.dataset.modelName || this.getOption('modelName') || 'model'
     let model = inputEl.model
-    if (!model) { 
-      model = this.view[modelName] 
+    if (!model) {
+      model = this.view[modelName]
     }
     if (!model) {
       console.warn(`FormBind: could not find model "${modelName}" in view "${this.view.cid}"`)
@@ -48,7 +50,14 @@ const FormBind = Behavior.extend({
       default:
         value = inputEl.value
     }
-    model.set(prop, value, {validate: true, attributes: [prop]})
+    // handle nested attributes
+    if (prop.indexOf('.') !== -1) {
+      const attrs = _.clone(model.attributes)
+      setPath(attrs, prop, value)
+      model.set(attrs, {validate: true, attributes: [prop]})
+    } else {
+      model.set(prop, value, {validate: true, attributes: [prop]})
+    }
   }
 })
 

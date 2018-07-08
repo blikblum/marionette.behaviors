@@ -19,6 +19,7 @@ const FormBind = Behavior.extend({
   },
 
   events: {
+    'input select': 'updateModel',
     'input input': 'updateModel',
     'change input[type=radio]': 'updateModel',
     'changeDate input': 'updateModel'

@@ -30,6 +30,7 @@ const FormBind = Behavior.extend({
   updateModel (e) {
     const inputEl = e.target
     const prop = inputEl.name
+    if (!prop) return
     const propType = inputEl.dataset.propType || inputEl.type
     const modelName = inputEl.dataset.modelName || this.getOption('modelName') || 'model'
     let model = inputEl.model
@@ -42,13 +43,17 @@ const FormBind = Behavior.extend({
     }
 
     let value
-    if (!prop) return
+    switch (inputEl.type) {
+      case 'checkbox':
+        value = Boolean(inputEl.checked)
+        break
+      default:
+        value = inputEl.value
+    }
     switch (propType) {
       case 'number':
         value = parseNumber(inputEl.value)
         break
-      default:
-        value = inputEl.value
     }
     // handle nested attributes
     if (prop.indexOf('.') !== -1) {
